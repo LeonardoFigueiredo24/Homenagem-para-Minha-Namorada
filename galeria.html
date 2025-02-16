@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeria de Fotos e Vídeos</title>
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+</head>
+<body class="galeria">
+    <div class="container">
+        <h1>Nossos Momentos</h1>
+        
+        <!-- Player de música -->
+        <audio controls>
+            <source src="poesia-acustica-2.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+        
+        <!-- Galeria de fotos -->
+        <div class="gallery">
+            <div class="photo">
+                <img src="foto1.jpg" alt="Foto 1" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto2.jpg" alt="Foto 2" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto3.jpg" alt="Foto 3" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto4.jpg" alt="Foto 4" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto5.jpg" alt="Foto 5" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto6.jpg" alt="Foto 6" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto7.jpg" alt="Foto 7" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto8.jpg" alt="Foto 8" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto9.jpg" alt="Foto 9" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto10.jpg" alt="Foto 10" class="clickable" onclick="openFullscreen(this)">
+            </div>
+            <div class="photo">
+                <img src="foto11.jpg" alt="Foto 11" class="clickable" onclick="openFullscreen(this)">
+            </div>
+        </div>
+        
+        <!-- Galeria de vídeos -->
+        <div class="videos">
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video1.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video2.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video3.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video4.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video5.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video6.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="video">
+                <video controls class="clickable" onclick="openFullscreen(this)">
+                    <source src="video7.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-button">Voltar</a>
+    </div>
+    
+    <!-- Modal para exibição em tela cheia -->
+    <div id="fullscreen-modal" style="display: none;">
+        <span class="close">&times;</span>
+        <img id="fullscreen-img" src="" alt="">
+        <video id="fullscreen-video" controls></video>
+    </div>
+
+    <script>
+        function openFullscreen(element) {
+            var modal = document.getElementById('fullscreen-modal');
+            var fullscreenImg = document.getElementById('fullscreen-img');
+            var fullscreenVideo = document.getElementById('fullscreen-video');
+
+            // Verifica se o elemento clicado é uma imagem ou vídeo
+            if (element.tagName.toLowerCase() === 'img') {
+                fullscreenImg.src = element.src;
+                fullscreenImg.style.display = 'block';
+                fullscreenVideo.style.display = 'none';
+            } else if (element.tagName.toLowerCase() === 'video') {
+                fullscreenVideo.src = element.src;
+                fullscreenImg.style.display = 'none';
+                fullscreenVideo.style.display = 'block';
+            }
+
+            modal.style.display = 'flex';
+        }
+
+        document.querySelector('.close').addEventListener('click', function() {
+            document.getElementById('fullscreen-modal').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

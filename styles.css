@@ -1,3 +1,10 @@
+/* Resetando algumas margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     background: linear-gradient(135deg, #ff9a9e, #fad0c4);
     font-family: 'Arial', sans-serif;
@@ -6,56 +13,105 @@ body {
     margin: 0;
     padding: 0;
 }
+
 .container {
     margin-top: 50px;
     padding: 20px;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
+    position: relative;
 }
+
 h1 {
     font-size: 2.5em;
     animation: fadeIn 2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    color: #333;
 }
+
+/* Ícone da galeria ao lado do título */
+.gallery-icon {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.gallery-icon img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s;
+}
+.gallery-icon img:hover {
+    transform: scale(1.1);
+}
+
 .message {
     font-size: 1.5em;
     animation: slideIn 2s;
     margin-bottom: 20px;
 }
-.gallery {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 20px;
+
+/* Estilos para a galeria de fotos na index.html */
+.container .gallery {
+    display: flex; /* Usando flexbox para alinhar as imagens lado a lado */
+    justify-content: center; /* Alinha as imagens ao centro */
+    align-items: center; /* Alinha verticalmente as imagens */
+    flex-wrap: wrap; /* Permite que as imagens se ajustem em múltiplas linhas se necessário */
+    gap: 20px; /* Espaçamento entre as fotos */
     padding: 20px;
-    max-width: 100%;
-    margin: 0 auto;
 }
-.photo {
+
+/* Estilos para cada foto na galeria */
+.container .gallery .photo {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     max-width: 160px;
 }
-.photo img {
-    width: 124px;
-    height: 124px;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
+
+/* Estilos para as imagens na página index.html */
+body.index .container .gallery .photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 100;  /* Imagens quadradas na página index */
 }
-.photo img:hover {
+
+/* Estilos para as imagens na página galeria.html */
+body.galeria .container .gallery .photo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 0%;  /* Imagens arredondadas na página galeria */
+}
+
+/* Efeito de hover nas imagens */
+.container .gallery .photo img:hover {
     transform: scale(1.1);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
-.photo-text {
-    font-size: 1em;
-    color: #800040;
-    margin-top: 10px;
-    font-style: italic;
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 600px) {
+    .container .gallery {
+        flex-direction: row;  /* Alinha as imagens horizontalmente */
+        gap: 10px; /* Ajusta o espaço entre as imagens */
+        padding: 10px;
+    }
+
+    .container .gallery .photo {
+        max-width: 100px; /* Ajusta a largura das fotos para telas menores */
+    }
+
+    .container .gallery .photo img {
+        width: 100px;  /* Ajusta o tamanho das imagens para dispositivos móveis */
+        height: 100px;
+    }
 }
+
+/* Botão de surpresa */
 button {
     background-color: #b3005e;
     color: white;
@@ -66,23 +122,30 @@ button {
     margin-top: 20px;
     border-radius: 8px;
 }
+
 button:hover {
     background-color: #800040;
 }
+
+/* Mensagem escondida */
 .hidden {
     display: none;
     font-size: 1.5em;
     margin-top: 20px;
     animation: fadeIn 2s;
 }
+
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
 @keyframes slideIn {
     from { transform: translateY(-20px); opacity: 0; }
     to { transform: translateY(0); opacity: 1; }
 }
+
+/* Corações animados */
 #hearts-container {
     position: fixed;
     width: 100%;
@@ -111,4 +174,130 @@ button:hover {
         transform: translateY(-200px) scale(1.5);
         opacity: 0;
     }
+}
+
+/* Ícone do player de música menor */
+.music-player {
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s;
+}
+.music-player:hover {
+    transform: scale(1.1);
+}
+
+/* Botão de voltar mais elegante */
+.back-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: #b3005e;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    border-radius: 8px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.back-button:hover {
+    background: #800040;
+    transform: scale(1.1);
+}
+
+/* Player de música */
+audio {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    display: block;
+}
+
+/* Galeria de fotos e vídeos */
+.gallery, .videos {
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+/* Imagens e vídeos */
+.gallery img, .videos video {
+    width: 100%;
+    height: auto;
+    max-width: 300px; /* Limita o tamanho das imagens e vídeos */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery img:hover, .videos video:hover {
+    transform: scale(1.05);
+}
+
+/* Modal para imagens e vídeos em tela cheia */
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.fullscreen-content {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.back-button:hover {
+    background-color: #555;
+}
+
+/* Estilos do Modal */
+#fullscreen-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+#fullscreen-img,
+#fullscreen-video {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+.close {
+    color: white;
+    font-size: 30px;
+    cursor: pointer;
+    z-index: 10;
 }
